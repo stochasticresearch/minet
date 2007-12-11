@@ -14,4 +14,9 @@ minet_1.1.4
 minet_1.1.5
 	  - names of functions + documentation
 	  - removed gaussian estimator
+minet_1.1.6
+	  - fixed error in demo + vignette
+	  - added "globalequalwidth" discretization
+	  - little changes vignette and help files
 
+          
