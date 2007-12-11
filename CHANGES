@@ -18,5 +18,9 @@ minet_1.1.6
 	  - fixed error in demo + vignette
 	  - added "globalequalwidth" discretization
 	  - little changes vignette and help files
-
+minet_1.1.7
+	- equal width discretize bug corrected 
+	- build.mim() limited to datasets with less than 32k variables
+	- minet.Rnw, minet.pdf
+	- minet.Rd, build.mim.rd
           
