@@ -1,0 +1,20 @@
+\name{norm}
+\alias{norm}
+
+\title{Data Normalization}
+\usage{norm(x)}
+\arguments{
+   \item{x}{the data to be normalized.}
+}
+\value{
+      \code{norm} returns the argument \code{x} with normalized values (i.e. values ranging from 0 to 1)
+}
+\description{
+      Normalizes data \code{x} using the following code : \eqn{(x-\min(x))/(\max(x-min(x)))}{(x-min(x))/(\max(x-min(x)))}.
+}
+\examples{
+data <- runif(100,-10,10)
+ndata <- norm(data)
+}
+\keyword{misc}
+
