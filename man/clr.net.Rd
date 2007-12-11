@@ -1,24 +1,25 @@
 
-\name{clr.net}
-\alias{clr.net}
+\name{clr}
+\alias{clr}
 
 \title{Context Likelihood or Relatedness Network}
-\usage{clr.net( mim )}
+\usage{clr( mim )}
 \arguments{
-  \item{mim}{ the mutual information matrix - see \code{\link{build.mim}}}
+  \item{mim}{A square matrix whose i,j th element is the mutual information  
+			between variables \eqn{Xi}{X_i} and \eqn{Xj}{X_j} - see \code{\link{build.mim}}.}
 }
 \value{
-  \code{clr.net}  returns a matrix which is the weighted adjacency matrix of the network.
+  \code{clr} returns a matrix which is the weighted adjacency matrix of the network.
   In order to display the network, load the package Rgraphviz and use the following comand
           plot( as( returned.matrix ,"graphNEL") )
 
 }
 \description{
-  \code{clr.net} uses the mutual information matrix to build a network - see details.
+  \code{clr} takes the mutual information matrix as input in order to return the infered network - see details.
 }
 \details{
       The CLR algorithm is an extension of relevance network. Instead of 
-      considering the information \eqn{I(X_i;X_j)}{I(Xi;Xj)} between features
+      considering the mutual information \eqn{I(X_i;X_j)}{I(Xi;Xj)} between features
       \eqn{X_i}{Xi} and \eqn{X_j}{Xj}, it takes into account the score 
       \eqn{\sqrt{z_i^2+z_j^2}}{sqrt(zi^2+zj^2)}, where \cr
       \deqn{ z_i = \max \bigg\lbrace 0, \frac{I(X_i;X_j)-\mu_i}{\sigma_i} \bigg\rbrace }{ 
@@ -36,12 +37,12 @@
       Biology, 2007.    
 }
 
-\seealso{\code{\link{build.mim}},   \code{\link{aracne.net}},   \code{\link{mr.net}} }
+\seealso{\code{\link{build.mim}},   \code{\link{aracne}},   \code{\link{mrnet}} }
 
 \examples{
 data(syn.data)
-mim <- build.mim(disc(syn.data))
-net <- clr.net(mim)
+mim <- build.mim(discretize(syn.data))
+net <- clr(mim)
 }
 \keyword{misc}
 

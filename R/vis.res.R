@@ -28,13 +28,12 @@ show.pr <- function( table, device=-1, ... )
       for(i in 1:n)
 	    p[i] <- max(pr[,1][1:i],na.rm=TRUE)
       if(device==-1) {
-            get(getOption("device"))()
+			dev.new()
             plot( pr$r,p, xlab="recall",
                   ylab="precision",
                   main="PR-Curve",
                   xlim=0:1,ylim=0:1,...)
-      }
-      else {
+      }else{
             dev.set(device)
             points( pr$r,p, xlab="recall",
                   ylab="precision", 
@@ -47,14 +46,13 @@ show.roc <- function( table, device=-1, ... )
 {
       rates <- rates(table)
       if(device==-1) {
-            get(getOption("device"))()
+            dev.new()
             plot( rates$fpr,rates$tpr,
                   xlab="FP rate", 
                   ylab="TP rate",
                   main="ROC-Curve",
                   xlim=0:1,ylim=0:1,...)
-      }
-      else {
+      }else{
             dev.set(device)
             points( rates$fpr,rates$tpr,
                   xlab="FP rate",
@@ -71,5 +69,7 @@ fscores <- function(table,beta=1)
       res <- ((beta+1)*pr[,1]*pr[,2]) / (beta*pr[,1]+pr[,2])
       res[which(is.nan(res))]=0
       res[which(is.infinite(res))]=0 
-      res
+      res <- as.data.frame(res)
+	names(res) <- "fscores"
+	res
 }

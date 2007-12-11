@@ -7,3 +7,11 @@ minet_1.1.2
 minet_1.1.3
       - .Call is used instead of .C
       - C++ entry points are registered
+minet_1.1.4
+	  - bcell dataset removed
+	  - improved vignette
+	  - documentation updated
+minet_1.1.5
+	  - names of functions + documentation
+	  - removed gaussian estimator
+

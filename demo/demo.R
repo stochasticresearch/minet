@@ -2,13 +2,13 @@ data(syn.data)
 data(syn.net)
 
 #MUTUAL INFORMATION ESTIMATION
-estimator = "empirical"
+estimator = "mi.empirical"
 mim <- build.mim(disc(syn.data),estimator)   
 
 #INFERENCE
-clr <- clr.net(mim)
-mr  <- mr.net(mim)
-ar  <- aracne.net(mim)
+clr <- clr(mim)
+mr  <- mrnet(mim)
+ar  <- aracne(mim)
 
 #VALIDATION
 t.clr <- validate(clr,syn.net,steps=50)
@@ -44,7 +44,7 @@ n <- list(fillcolor="lightgreen",fontsize=20,fontcolor="red",height=.4,width=.4,
 e <- list(fontsize=20)
 
 #PLOT MRNET AND TRUE.NET
-get(getOption("device"))(width=12,height=10)
+dev.new()
 plot(mr.graph, attrs = list(node=n,edge=e), main="MRNET") 
-get(getOption("device"))()
+dev.new()
 plot(true.graph, attrs=list(node=n,edge=e), main="SYNTHETIC NETWORK")
