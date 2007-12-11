@@ -24,7 +24,9 @@ and analysis of structure learning algorithms. BMC Bioinformatics, 2006.
 \examples{
 data(syn.data)
 data(syn.net)
-infered.net <- mr.net(build.mim(disc(syn.data)))
+syn.data <- disc(syn.data)
+mim <- build.mim(syn.data)
+infered.net <- mr.net(mim)
 max(fscores(validate( infered.net, syn.net )))
 }
 \keyword{datasets}

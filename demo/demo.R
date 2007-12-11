@@ -11,9 +11,9 @@ mr  <- mr.net(mim)
 ar  <- aracne.net(mim)
 
 #VALIDATION
-t.clr <- validate(clr,syn.net,narcs=10)
-t.mr  <- validate(mr, syn.net,narcs=10)
-t.ar  <- validate(ar, syn.net,narcs=10)
+t.clr <- validate(clr,syn.net,steps=50)
+t.mr  <- validate(mr, syn.net,steps=50)
+t.ar  <- validate(ar, syn.net,steps=50)
 
 #RESULTS
 dev <- show.pr(t.clr,col="red",type="b")
@@ -32,9 +32,7 @@ paste(" MR : ",round(max(fscores(t.mr)),3))
 
 #REMOVING SOME EDGES
 thrsh <- (max(mr)-min(mr))/4
-for( i in 1:nrow(mr) )
-     for( j in 1:nrow(mr) )
-            if( mr[i,j]<thrsh ) mr[i,j]<-0
+mr[which(mr<thrsh)] <- 0
 
 #MAKING graphNELs
 library(Rgraphviz)
@@ -42,11 +40,11 @@ mr.graph  <- as(as.matrix(mr), "graphNEL")
 true.graph<- as(as.matrix(syn.net), "graphNEL")
 
 #SETTING ATTRIBUTES
-n <- list(fillcolor="lightgreen",fontsize=8,fontcolor="red",height=.4,width=.4,fixedsize=F)
+n <- list(fillcolor="lightgreen",fontsize=20,fontcolor="red",height=.4,width=.4,fixedsize=F)
 e <- list(fontsize=20)
 
 #PLOT MRNET AND TRUE.NET
-get(getOption("device"))(width=12,height=12)
+get(getOption("device"))(width=12,height=10)
 plot(mr.graph, attrs = list(node=n,edge=e), main="MRNET") 
 get(getOption("device"))()
 plot(true.graph, attrs=list(node=n,edge=e), main="SYNTHETIC NETWORK")

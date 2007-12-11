@@ -2,11 +2,12 @@
 \alias{build.mim}
 
 \title{Build Mutual Information Matrix}
-\usage{build.mim(data, mi.est="empirical")}
+\usage{build.mim(data, estimator="empirical")}
 \arguments{
   \item{data}{Gene expression dataset or any dataset where columns contain variables/features and rows contain outcomes/samples.}
-  \item{mi.est}{Mutual information estimator. The package implements four estimators : "gaussian", "empirical", "shrink", "millermadow" (default:"empirical") - see details. 
-                The data must be discrete in order to use empirical, shrink or miller-madow estimators - see \code{\link{disc}}.}
+  \item{estimator}{Mutual information estimator. The package implements four estimators : "gaussian", "empirical", 
+              "shrink","millermadow" (default:"empirical") - see details. 
+               The data must be discrete in order to use empirical, shrink or miller-madow estimators - see \code{\link{disc}}.}
 }
 \value{ \code{build.mim} returns the mutual information matrix.}
 \description{
@@ -14,7 +15,7 @@
       the computation of the mutual information matrix (MIM), a square 
       matrix whose (i,j) element is the mutual information between variables
       \eqn{X_i}{Xi} and \eqn{X_j}{Xj}. \code{build.mim} returns the MIM 
-      according to the mutual information estimator \code{mi.est}.
+      according to the mutual information estimator \code{estimator}.
 }
 \details{
       \item "gaussian" : This estimator assumes normally distributed variables.
@@ -39,9 +40,11 @@
 }
 \seealso{\code{\link{clr.net}},   \code{\link{aracne.net}},   \code{\link{mr.net}}}
 \examples{
-data(syn.data)
-estimator="empirical"
-nb.bins = sqrt(nrow(syn.data))
-mim <- build.mim(disc(syn.data,nbins=nb.bins),estimator)
+  data(syn.data)
+  #mutual information estimator
+  estimator="empirical"
+  #number of bins used to discretize
+  nb.bins = sqrt(nrow(syn.data))
+  mim <- build.mim(disc(syn.data,nbins=nb.bins),estimator)
 }
 \keyword{misc}

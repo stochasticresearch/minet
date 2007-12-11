@@ -9,8 +9,8 @@
 \title{Visualize Results}
 
 \description{
-  A group of functions to plot precision-recall and ROC curves and to compute f-scores from a dataframe 
-  containing four columns, tp, fp, tn, fn, as produced by the \code{\link{validate}} function.
+  A group of functions to plot precision-recall and ROC curves and to compute f-scores from the 
+  data frame returned by the \code{\link{validate}} function.
 }
 \usage{
   pr(table)
@@ -19,25 +19,27 @@
   show.pr(table,device=-1,...)
   show.roc(table,device=-1,...)
 }
+
 \arguments{
-  \item{table}{This is a ('steps' x 4) matrix where 'steps' is the number of thresholds used in the 
-      validation process and where columns contain TP,FP,TN,FN values  - see \code{\link{validate}}.}
+  \item{table}{This is a (\code{steps} x 5) matrix where \code{steps} is the number of thresholds used in the 
+      validation process and where columns contain TP,FP,TN,FN values (confusion matrix) as well as the threshold
+      value used  - see \code{\link{validate}}.}
   \item{beta}{This is the weight of the recall in the f-score formula. Default: 1 (meaning precision as 
       important as recall).}
-  \item{device}{the device to be used. This parameter allows the user to plot the 
+  \item{device}{The device to be used. This parameter allows the user to plot the 
       results of various inferences on the same plotting window - see examples.}
   \item{...}{ arguments passed to \code{plot} }
 }
 \value{
-  The functions \code{show.roc} (\code{show.pr}) plots the ROC curve (PR curve) and returns the device used for the plot.
+  The functions \code{show.roc} (\code{show.pr}) plots the ROC-curve (PR-curve) and returns the device used for the plot.
   
-  The function \code{pr} returns a ('steps' x 2) matrix where steps is the number of thresholds used 
+  The function \code{pr} returns a (\code{steps} x 2) matrix where steps is the number of thresholds used 
   in the validation process. The first column contains precisions and the second recalls.
   
-  The function \code{rates} also returns a ('steps' x 2) matrix where the first column contains true 
-  positive rate and the second column false positive rate.  
+  The function \code{rates} also returns a (\code{steps} x 2) matrix where the first column contains true 
+  positive rates and the second column false positive rates.  
 
-  The function \code{fscores} returns 'steps' fscores according to the 'steps' confusion matrices 
+  The function \code{fscores} returns \code{steps} fscores according to the \code{steps} confusion matrices 
   contained in the 'table' argument.
 }
 
@@ -60,7 +62,7 @@ mr.tbl <- validate(mr,syn.net)
 ar.tbl <- validate(ar,syn.net)
 clr.tbl<- validate(clr,syn.net)
 # Plot PR-Curves
-max(fscores(table))
+max(fscores(mr.tbl))
 dev <- show.pr(mr.tbl, col="green", type="b")
 dev <- show.pr(ar.tbl, device=dev, col="blue", type="b")
 show.pr(clr.tbl, device=dev, col="red",type="b")

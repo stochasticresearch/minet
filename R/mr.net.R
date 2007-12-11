@@ -10,13 +10,7 @@ mr.net <- function( mim )
       else  stop("Supply a matrix-like argument")      
       if(ncol(mim) != nrow(mim))
             stop("Argument matrix must be square")
-
-      res <- .C( "mrnet",
-            as.double(mim),
-            as.integer(ncol(mim)),
-            res = double(ncol(mim)*ncol(mim)),
-            DUP=FALSE,PACKAGE="minet")$res
-
+      res <- .Call("mrnet", mim, nrow(mim), DUP=FALSE, PACKAGE="minet")
       dim(res) <- dim(mim)
       res <- as.data.frame(res)
       names(res)<-var.id

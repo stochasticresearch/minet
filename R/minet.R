@@ -3,7 +3,8 @@ minet <- function(dataset, method="mrnet", estimator="empirical", disc.method="e
       net <- NULL
       if( estimator=="empirical" ||
           estimator=="shrink" ||
-          estimator=="millermadow" )
+          estimator=="millermadow" ||
+          estimator=="dirichlet" )
           dataset <- disc(dataset,disc.method,nbins)
       else if( estimator!="gaussian")
           stop("unknown estimator")
@@ -12,10 +13,10 @@ minet <- function(dataset, method="mrnet", estimator="empirical", disc.method="e
             net <- clr.net(mim)
       else if( method=="mrnet" || method=="mr" )
             net <- mr.net(mim)
-      else if( method=="aracne" )
+      else if( method=="aracne" || method=="ar")
             net <- aracne.net(mim)
       else if( method=="relnet" || method=="rel" )
             net <- mim
       else stop( "uknown method" )
-      norm(net)
+      as.matrix(norm(net))
 }

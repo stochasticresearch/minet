@@ -69,7 +69,7 @@ fscores <- function(table,beta=1)
 {
       pr <- pr(table)
       res <- ((beta+1)*pr[,1]*pr[,2]) / (beta*pr[,1]+pr[,2])
-      ind <- which(is.nan(res))
-      for( i in 1:length(ind) ) res[ind[i]]=0;
+      res[which(is.nan(res))]=0
+      res[which(is.infinite(res))]=0 
       res
 }

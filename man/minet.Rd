@@ -47,7 +47,7 @@ minet(dataset, method="mrnet", estimator="empirical",
 \examples{
 data(syn.data)
 net1 <- minet( syn.data )
-net2 <- minet( syn.data, method="mrnet", estimator="shrink" )
-net3 <- minet( syn.data, method="clr", estimator="gaussian" )
+net2 <- minet( syn.data, estimator="shrink" )
+net3 <- minet( syn.data, method="mrnet", estimator="gaussian" )
 }
 \keyword{misc}

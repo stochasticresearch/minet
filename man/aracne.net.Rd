@@ -33,8 +33,8 @@
 }
 \seealso{\code{\link{build.mim}},   \code{\link{clr.net}},    \code{\link{mr.net}}}
 \examples{
-data(bcell)
-mim <- build.mim(disc(bcell))
+data(syn.data)
+mim <- build.mim(disc(syn.data))
 net <- aracne.net(mim)
 }
 \keyword{misc}
