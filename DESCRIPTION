@@ -1,6 +1,7 @@
 Package: minet
 Title: Mutual Information Network Inference
-Version: 1.4.0
+Version: 1.6.0
+Date: 2007
 Author: Patrick E. Meyer, Frederic Lafitte, Gianluca Bontempi
 Description: This package implements various algorithms for inferring
         mutual information networks from data. All the algorithms
@@ -11,6 +12,6 @@ Depends: R (>= 2.3.0)
 License: GPL (>= 3)
 URL: http://www.ulb.ac.be/di/mlg
 biocViews: Microarray, GraphsAndNetworks
-Packaged: 2009-04-21 10:42:15 UTC; biocbuild
+Packaged: 2009-05-11 15:30:20 UTC; hornik
 Repository: CRAN
-Date/Publication: 2009-05-10 18:54:47
+Date/Publication: 2009-05-11 15:36:16
