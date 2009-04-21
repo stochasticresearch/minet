@@ -3,7 +3,7 @@ data(syn.net)
 
 #MUTUAL INFORMATION ESTIMATION
 estimator = "mi.empirical"
-mim <- build.mim(discretize(syn.data),estimator)   
+mim <- build.mim(disc(syn.data),estimator)   
 
 #INFERENCE
 clr <- clr(mim)

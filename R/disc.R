@@ -1,6 +1,7 @@
 discretize <- function( data, disc="equalfreq", nbins=sqrt(nrow(data)) )
 {
-      data <- as.data.frame(data)
+      if(!is.data.frame(data))
+            data <- as.data.frame(data)
       varnames <- names(data)
       dimensions <- dim(data)
       data <- data.matrix(data)
@@ -15,9 +16,6 @@ discretize <- function( data, disc="equalfreq", nbins=sqrt(nrow(data)) )
       else if( disc=="equalwidth" )
             res <- .Call("discEW",data,nrow(data),ncol(data),
                           as.integer(nbins),DUP=FALSE, PACKAGE="minet")
-	  else if( disc=="globalequalwidth") 
-			res <- as.vector(cut(data, nbins, labels = FALSE))
-	  
       else stop("unknown discretization method")  
       dim(res) <- dimensions
       res <- as.data.frame(res)

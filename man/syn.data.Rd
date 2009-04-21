@@ -12,7 +12,10 @@
  Each row contains a microarray experiment and each column contains a gene.
 }
 \source{
- SynTReN 1.1.3 with source network : yeast\_nn.sif
+ \itemize{
+   \item SynTReN 1.1.3
+   \item source network : yeast\_nn.sif
+ }
 }
 
 \references{

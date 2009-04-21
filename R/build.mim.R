@@ -14,9 +14,8 @@ build.mim <- function( data, estimator = "mi.empirical")
     #if( !(all(data==round(data)) ))
 	      #stop("This estimator requires discrete values")                      
       data[which(is.na(data))] <- -2000000
-	if(n>32000)
-		stop("too many variables")
-    res <- NULL 
+
+      res <- NULL 
 
     if( estimator == "mi.empirical")
           res <- .Call( "buildMIMempirical",data,N,n,
