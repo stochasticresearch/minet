@@ -10,13 +10,17 @@ mrnet <- function( mim )
       else  stop("Supply a matrix-like argument")      
       if(ncol(mim) != nrow(mim))
             stop("Argument matrix must be square")
-	
-		res <- .Call("mrnetold", mim, nrow(mim), DUP=FALSE, PACKAGE="minet")
+	  res <- .Call("mrnet", mim, nrow(mim), DUP=FALSE, PACKAGE="minet")
 	  dim(res) <- dim(mim)
 	  res <- as.matrix(res)
 	  rownames(res) <- var.id
 	  colnames(res) <- var.id
 	  res
+}
+
+mrnetb <- function( mim)
+{
+"method not yet available"
 }
 
 clr<- function( mim )

@@ -14,7 +14,8 @@ extern "C"
 {
 SEXP aracne(SEXP mim, SEXP nbvar, SEXP e);
 SEXP clr(SEXP mim, SEXP nbvar);
-SEXP mrnetold( SEXP mim, SEXP nbvar);
+SEXP mrnet( SEXP mim, SEXP nbvar);
+SEXP mrnetb( SEXP mim, SEXP nbvar);
 SEXP symetrize( SEXP mat, SEXP size );
 SEXP validate( SEXP inet,SEXP tnet,SEXP n,SEXP steps, SEXP thresh );
 }

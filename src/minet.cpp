@@ -1,7 +1,8 @@
 #include "minet.h"
 
 R_CallMethodDef callMethods[] = {
-      {"mrnet", (void*(*)()) &mrnetold,  2},
+      {"mrnet", (void*(*)()) &mrnet,  2},
+	  {"mrnetb", (void*(*)()) &mrnet,  2},
       {"aracne",(void*(*)()) &aracne, 3},
       {"clr", (void*(*)()) &clr, 2},
       {"validate",(void*(*)())&validate, 6},

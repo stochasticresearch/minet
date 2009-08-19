@@ -2,7 +2,7 @@
 \alias{mrnet}
 
 \title{Maximum Relevance Minimum Redundancy}
-\usage{mrnet( mim )}
+\usage{mrnet(mim)}
 \arguments{
   \item{mim}{ A square matrix whose i,j th element is the mutual information 
 		 between variables \eqn{Xi}{X_i} and \eqn{Xj}{X_j} - see \code{\link{build.mim}}.}
@@ -43,7 +43,7 @@
  Feature selection based on mutual information: Criteria of max-dependency, max relevance and min redundancy.
  IEEE transaction on Pattern Analysis and Machine Intelligence, 2005
 }
-\seealso{\code{\link{build.mim}},   \code{\link{clr}},   \code{\link{aracne}}}
+\seealso{\code{\link{build.mim}},   \code{\link{clr}},   \code{\link{aracne}}, \code{\link{mrnetb}}}
 \examples{
 data(syn.data)
 mim <- build.mim(syn.data, estimator="spearman")

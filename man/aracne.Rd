@@ -34,7 +34,7 @@
  algorithm for the reconstruction of gene regulatory networks in a mammalian
  cellular context. BMC Bioinformatics, 2006.
 }
-\seealso{\code{\link{build.mim}},   \code{\link{clr}},    \code{\link{mrnet}}}
+\seealso{\code{\link{build.mim}},   \code{\link{clr}},    \code{\link{mrnet}}, \code{\link{mrnetb}}}
 \examples{
 data(syn.data)
 mim <- build.mim(syn.data,estimator="spearman")

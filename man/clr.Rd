@@ -37,7 +37,7 @@
       Biology, 2007.    
 }
 
-\seealso{\code{\link{build.mim}},   \code{\link{aracne}},   \code{\link{mrnet}} }
+\seealso{\code{\link{build.mim}},   \code{\link{aracne}},   \code{\link{mrnet}}, \code{\link{mrnetb}} }
 
 \examples{
 data(syn.data)

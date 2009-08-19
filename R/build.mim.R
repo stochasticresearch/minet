@@ -1,9 +1,15 @@
-build.mim <- function( dataset, estimator = "mi.mm", disc = "none", nbins = sqrt(NROW(dataset)))
+build.mim <- function( dataset, estimator = "spearman", disc = "none", nbins = sqrt(NROW(dataset)))
 {
+	if( disc == "equalfreq" || disc == "equalwidth" || disc == "globalequalwidth")
+				dataset<-discretize(dataset, disc, nbins)
 	if( estimator=="spearman" || estimator=="pearson" || estimator=="kendall") {
-		  mim <-cor(dataset,method=estimator)^2
-          diag(mim)<-0
+		  mim<-cor(dataset,method=estimator,use="complete.obs")^2
+		  diag(mim)<-0
+		  maxi<-0.999999
+		  mim[which(mim>maxi)]<-maxi
+		  mim <--0.5*log(1-mim)
 	}
+	
 	else if(estimator == "mi.mm")
 		estimator = "mm"
 	else if(estimator == "mi.empirical")
@@ -16,11 +22,8 @@ build.mim <- function( dataset, estimator = "mi.mm", disc = "none", nbins = sqrt
           stop("unknown estimator")
 		  
 	if( estimator=="mm" || estimator=="emp" || estimator=="sg" || estimator=="shrink") {
-		   if( disc == "equalfreq" || disc == "equalwidth" || disc == "globalequalwidth")
-				dataset<-discretize(dataset, disc, nbins)
 		   mim <-mutinformation(dataset,method=estimator)
 		   diag(mim) <- 0
 	}
-	
 	mim
 }

@@ -1,6 +1,11 @@
 #include "minet.h"
 
-SEXP mrnetold( SEXP Rmim, SEXP Rsize )
+SEXP mrnetb( SEXP Rmim, SEXP Rsize )
+{     
+      
+}
+
+SEXP mrnet( SEXP Rmim, SEXP Rsize )
 {     
       const double *mim;
       const int* size;
@@ -68,3 +73,4 @@ SEXP mrnetold( SEXP Rmim, SEXP Rsize )
       UNPROTECT(5);
       return Rres;
 }
+
