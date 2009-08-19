@@ -6,7 +6,7 @@
 \arguments{
   \item{mim}{ A square matrix whose i,j th element is the mutual information 
 		 between variables \eqn{Xi}{X_i} and \eqn{Xj}{X_j} - see \code{\link{build.mim}}.}
-}
+  }
 \value{\code{mrnet} returns a matrix which is the weighted adjacency matrix of the network.
       In order to display the network, load the package Rgraphviz and use the following command: \cr
           plot( as( returned.matrix ,"graphNEL") )
@@ -46,7 +46,7 @@
 \seealso{\code{\link{build.mim}},   \code{\link{clr}},   \code{\link{aracne}}}
 \examples{
 data(syn.data)
-mim <- build.mim(discretize(syn.data))
+mim <- build.mim(syn.data, estimator="spearman")
 net <- mrnet(mim)
 }
 \keyword{misc}

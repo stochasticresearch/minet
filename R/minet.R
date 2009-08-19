@@ -1,14 +1,8 @@
-minet <- function(dataset, method="mrnet", estimator="mi.empirical", disc="equalfreq",nbins=sqrt(nrow(dataset)) )
+minet <- function(dataset, method="mrnet", estimator="spearman", disc="none", nbins=sqrt(NROW(dataset)))
 {
       net <- NULL
-      if( estimator=="mi.empirical" ||
-          estimator=="mi.shrink" ||
-          estimator=="mi.mm" ||
-          estimator=="mi.sg" )
-          dataset <- discretize(dataset,disc,nbins)
-      else #if( estimator!="gaussian")
-          stop("unknown estimator")
-      mim <- build.mim(dataset,estimator)
+      mim<-build.mim(dataset,estimator,disc,nbins)
+      
       if( method=="clr" )
             net <- clr(mim)
       else if( method=="mrnet")
@@ -16,5 +10,6 @@ minet <- function(dataset, method="mrnet", estimator="mi.empirical", disc="equal
       else if( method=="aracne")
             net <- aracne(mim)
       else stop( "uknown method" )
-      as.matrix(norm(net))
+	  
+      net/max(net) #normalization
 }

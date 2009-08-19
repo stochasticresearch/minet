@@ -41,7 +41,7 @@
 
 \examples{
 data(syn.data)
-mim <- build.mim(discretize(syn.data))
+mim <- build.mim(syn.data,estimator="spearman")
 net <- clr(mim)
 }
 \keyword{misc}

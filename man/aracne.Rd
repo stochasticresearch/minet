@@ -37,7 +37,7 @@
 \seealso{\code{\link{build.mim}},   \code{\link{clr}},    \code{\link{mrnet}}}
 \examples{
 data(syn.data)
-mim <- build.mim(discretize(syn.data))
+mim <- build.mim(syn.data,estimator="spearman")
 net <- aracne(mim)
 }
 \keyword{misc}
